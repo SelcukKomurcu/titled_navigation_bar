@@ -165,12 +165,7 @@ class _TitledBottomNavigationBarState extends State<TitledBottomNavigationBar> {
           Stack(
             alignment: AlignmentDirectional.center,
             children: <Widget>[
-              AnimatedOpacity(
-                opacity: isSelected ? 0.0 : 1.0,
-                duration: duration,
-                curve: curve,
-                child: reverse ? _buildIcon(item) : _buildText(item),
-              ),
+              reverse ? _buildText(item) : _buildIcon(item),
               AnimatedAlign(
                 duration: duration,
                 alignment: isSelected ? Alignment.center : Alignment(0, 5.2),
@@ -181,12 +176,7 @@ class _TitledBottomNavigationBarState extends State<TitledBottomNavigationBar> {
           Stack(
             alignment: AlignmentDirectional.bottomCenter,
             children: <Widget>[
-              AnimatedOpacity(
-                opacity: isSelected ? 0.0 : 1.0,
-                duration: duration,
-                curve: curve,
-                child: reverse ? _buildIcon(item) : _buildText(item),
-              ),
+              reverse ? _buildIcon(item) : _buildText(item),
               AnimatedAlign(
                 duration: duration,
                 alignment: isSelected ? Alignment.center : Alignment(0, 5.2),
