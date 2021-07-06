@@ -148,10 +148,10 @@ class _TitledBottomNavigationBarState extends State<TitledBottomNavigationBar> {
     );
   }
 
-  Widget _buildText(TitledNavigationBarItem item) {
+  Widget _buildText(TitledNavigationBarItem item, bool isSelected) {
     return DefaultTextStyle.merge(
       child: item.title,
-      style: TextStyle(color: reverse ? activeColor : widget.inactiveColor),
+      style: TextStyle(color: isSelected ? activeColor : widget.inactiveColor),
     );
   }
 
@@ -165,22 +165,22 @@ class _TitledBottomNavigationBarState extends State<TitledBottomNavigationBar> {
           Stack(
             alignment: AlignmentDirectional.center,
             children: <Widget>[
-              reverse ? _buildText(item) : _buildIcon(item, isSelected),
+              reverse ? _buildText(item, isSelected) : _buildIcon(item, isSelected),
               AnimatedAlign(
                 duration: duration,
                 alignment: isSelected ? Alignment.center : Alignment(0, 5.2),
-                child: reverse ? _buildText(item) : _buildIcon(item, isSelected),
+                child: reverse ? _buildText(item, isSelected) : _buildIcon(item, isSelected),
               ),
             ],
           ),
           Stack(
             alignment: AlignmentDirectional.bottomCenter,
             children: <Widget>[
-              reverse ? _buildIcon(item, isSelected) : _buildText(item),
+              reverse ? _buildIcon(item, isSelected) : _buildText(item, isSelected),
               AnimatedAlign(
                 duration: duration,
                 alignment: isSelected ? Alignment.center : Alignment(0, 5.2),
-                child: reverse ? _buildIcon(item, isSelected) : _buildText(item),
+                child: reverse ? _buildIcon(item, isSelected) : _buildText(item, isSelected),
               ),
             ],
           ),
