@@ -139,10 +139,10 @@ class _TitledBottomNavigationBarState extends State<TitledBottomNavigationBar> {
     setState(() {});
   }
 
-  Widget _buildIcon(TitledNavigationBarItem item) {
+  Widget _buildIcon(TitledNavigationBarItem item, bool isSelected) {
     return IconTheme(
       data: IconThemeData(
-        color: reverse ? widget.inactiveColor : activeColor,
+        color: isSelected ? activeColor : widget.inactiveColor,
       ),
       child: item.icon,
     );
@@ -165,22 +165,22 @@ class _TitledBottomNavigationBarState extends State<TitledBottomNavigationBar> {
           Stack(
             alignment: AlignmentDirectional.center,
             children: <Widget>[
-              reverse ? _buildText(item) : _buildIcon(item),
+              reverse ? _buildText(item) : _buildIcon(item, isSelected),
               AnimatedAlign(
                 duration: duration,
                 alignment: isSelected ? Alignment.center : Alignment(0, 5.2),
-                child: reverse ? _buildText(item) : _buildIcon(item),
+                child: reverse ? _buildText(item) : _buildIcon(item, isSelected),
               ),
             ],
           ),
           Stack(
             alignment: AlignmentDirectional.bottomCenter,
             children: <Widget>[
-              reverse ? _buildIcon(item) : _buildText(item),
+              reverse ? _buildIcon(item, isSelected) : _buildText(item),
               AnimatedAlign(
                 duration: duration,
                 alignment: isSelected ? Alignment.center : Alignment(0, 5.2),
-                child: reverse ? _buildIcon(item) : _buildText(item),
+                child: reverse ? _buildIcon(item, isSelected) : _buildText(item),
               ),
             ],
           ),
