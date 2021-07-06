@@ -160,19 +160,39 @@ class _TitledBottomNavigationBarState extends State<TitledBottomNavigationBar> {
       color: item.backgroundColor,
       height: widget.height,
       width: width / items.length,
-      child: Stack(
-        alignment: AlignmentDirectional.center,
-        children: <Widget>[
-          AnimatedOpacity(
-            opacity: isSelected ? 0.0 : 1.0,
-            duration: duration,
-            curve: curve,
-            child: reverse ? _buildIcon(item) : _buildText(item),
+      child: Column(
+        children: [
+          Stack(
+            alignment: AlignmentDirectional.center,
+            children: <Widget>[
+              AnimatedOpacity(
+                opacity: isSelected ? 0.0 : 1.0,
+                duration: duration,
+                curve: curve,
+                child: reverse ? _buildIcon(item) : _buildText(item),
+              ),
+              AnimatedAlign(
+                duration: duration,
+                alignment: isSelected ? Alignment.center : Alignment(0, 5.2),
+                child: reverse ? _buildText(item) : _buildIcon(item),
+              ),
+            ],
           ),
-          AnimatedAlign(
-            duration: duration,
-            alignment: isSelected ? Alignment.center : Alignment(0, 5.2),
-            child: reverse ? _buildText(item) : _buildIcon(item),
+          Stack(
+            alignment: AlignmentDirectional.bottomCenter,
+            children: <Widget>[
+              AnimatedOpacity(
+                opacity: isSelected ? 0.0 : 1.0,
+                duration: duration,
+                curve: curve,
+                child: reverse ? _buildIcon(item) : _buildText(item),
+              ),
+              AnimatedAlign(
+                duration: duration,
+                alignment: isSelected ? Alignment.center : Alignment(0, 5.2),
+                child: reverse ? _buildIcon(item) : _buildText(item),
+              ),
+            ],
           ),
         ],
       ),
